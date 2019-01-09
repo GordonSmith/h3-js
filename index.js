@@ -14,4 +14,17 @@
  * limitations under the License.
  */
 
-module.exports = require('./dist/lib/h3core');
+(function (factory) {
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./dist/lib/h3core"], factory);
+    }
+})(function (require, exports) {
+    "use strict";
+
+    module.exports = require('./dist/lib/h3core');
+
+});
